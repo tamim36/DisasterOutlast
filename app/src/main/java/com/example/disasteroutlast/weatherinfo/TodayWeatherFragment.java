@@ -17,6 +17,7 @@ import com.example.disasteroutlast.weatherinfo.common.Common;
 import com.example.disasteroutlast.weatherinfo.model.WeatherResult;
 import com.example.disasteroutlast.weatherinfo.retrofit.RetrofitClient;
 import com.example.disasteroutlast.weatherinfo.retrofit.iOpenWeatherMap;
+import com.squareup.picasso.Picasso;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -88,7 +89,7 @@ public class TodayWeatherFragment extends Fragment {
                                @Override
                                public void accept(WeatherResult weatherResult) throws Exception {
                                     //Results
-                                   txt_temperature.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getTemp())));
+                                   setupLayout(weatherResult);
                                    weather_panel.setVisibility(View.VISIBLE);
                                    loading.setVisibility(View.GONE);
                                }
@@ -100,6 +101,26 @@ public class TodayWeatherFragment extends Fragment {
                            }
                 )
         );
+    }
+
+    private void setupLayout(WeatherResult weatherResult) {
+        //Load Image with Picasso library
+        Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
+            .append(weatherResult.getWeather()[0].getIcon())
+                .append(".png").toString()
+        ).into(img_weather);
+
+
+
+        txt_temperature.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getTemp())).append("°C").toString());
+        txt_city_name.setText(weatherResult.getName());
+        txt_date_time.setText(Common.convertUnixToDate(weatherResult.getDt()));
+        txt_pressure.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getPressure())).append(" hpa").toString());
+        txt_humidity.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getHumidity())).append(" %").toString());
+        txt_sunrise.setText(Common.convertUnixToHour(weatherResult.getSys().getSunrise()));
+        txt_sunset.setText(Common.convertUnixToHour(weatherResult.getSys().getSunset()));
+        txt_geocoord.setText(new StringBuilder("[").append(String.valueOf(weatherResult.getCoord().getLat())).append(String.valueOf(weatherResult.getCoord().getLon())).append("]").toString());
+        txt_wind.setText(new StringBuilder("Wind : ").append(String.valueOf(weatherResult.getWind().getSpeed())).append("km/h").toString());
     }
 
 }
