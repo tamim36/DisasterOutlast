@@ -115,6 +115,7 @@ public class WeatherMain extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(TodayWeatherFragment.getInstance(),"Today");
+        adapter.addFragment(ForcastFragment.getInstance(),"Forcast");
         viewPager.setAdapter(adapter);
     }
 
