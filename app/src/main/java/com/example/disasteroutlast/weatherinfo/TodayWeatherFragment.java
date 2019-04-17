@@ -103,12 +103,20 @@ public class TodayWeatherFragment extends Fragment {
         );
     }
 
+    @Override
+    public void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
+
     private void setupLayout(WeatherResult weatherResult) {
         //Load Image with Picasso library
         Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
             .append(weatherResult.getWeather()[0].getIcon())
                 .append(".png").toString()
-        ).into(img_weather);
+        )
+                .resize(175,175)
+                .into(img_weather);
 
 
 
