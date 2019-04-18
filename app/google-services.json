@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "880362917977",
+    "firebase_url": "https://disasteroutlast.firebaseio.com",
+    "project_id": "disasteroutlast",
+    "storage_bucket": "disasteroutlast.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880362917977:android:26fbe5f7f26d37ce",
+        "android_client_info": {
+          "package_name": "com.example.disasteroutlast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880362917977-jco0ar4mpjn8if5ak8n98ceb65t8ai8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.disasteroutlast",
+            "certificate_hash": "0242d5363f7cdb18e5a0d5f2469d15d9f4e2cbf8"
+          }
+        },
+        {
+          "client_id": "880362917977-00f8s2k2o831b5p04ptb879bv8uo0sem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdBZaV8puiFm1FVbH4Zne7ZAXbAnYsqko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880362917977-00f8s2k2o831b5p04ptb879bv8uo0sem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
