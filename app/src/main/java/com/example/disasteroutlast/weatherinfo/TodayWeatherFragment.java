@@ -111,12 +111,12 @@ public class TodayWeatherFragment extends Fragment {
 
     private void setupLayout(WeatherResult weatherResult) {
         //Load Image with Picasso library
-        Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
+        /*Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
             .append(weatherResult.getWeather()[0].getIcon())
                 .append(".png").toString()
         )
                 .resize(175,175)
-                .into(img_weather);
+                .into(img_weather);*/
 
 
 

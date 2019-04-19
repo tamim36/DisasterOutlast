@@ -51,7 +51,7 @@
     <Button
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="65dp"
-        android:id="@+id/disaster_btn2"
+        android:id="@+id/disaster_btn_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Disaster News"/>

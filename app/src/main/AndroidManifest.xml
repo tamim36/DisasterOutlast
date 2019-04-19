@@ -12,8 +12,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/MyMaterialTheme">
-        <activity android:name=".loginregister.Homepage"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".addpost.BasicActivtity"></activity>
+        <activity android:name=".addpost.ReviewActivity" />
+        <activity android:name=".addpost.PostActivity" />
+        <activity android:name=".addpost.Post_inner_part" />
+        <activity android:name=".addpost.MainPost" />
+        <activity android:name=".disasternews.MainDisaster" />
+        <activity android:name=".loginregister.Homepage" />
         <activity android:name=".loginregister.RegisterActivity" />
         <activity android:name=".loginregister.PasswordActivity" />
         <activity android:name=".loginregister.LoginActivity">

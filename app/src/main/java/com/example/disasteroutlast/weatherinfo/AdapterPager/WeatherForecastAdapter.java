@@ -34,12 +34,12 @@ public class WeatherForecastAdapter extends RecyclerView.Adapter<WeatherForecast
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
+        /*Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
                 .append(forcastWeather.getList()[i].getWeather()[0].getIcon())
                 .append(".png").toString()
         )
                 .resize(175,175)
-                .into(myViewHolder.img_weather);
+                .into(myViewHolder.img_weather);*/
 
         myViewHolder.txt_description.setText(new StringBuilder(forcastWeather.getList()[i].getWeather()[0].getDescription()).toString());
         myViewHolder.txt_date_tym.setText(new StringBuilder(Common.convertUnixToDate(forcastWeather.getList()[i].getDt())));

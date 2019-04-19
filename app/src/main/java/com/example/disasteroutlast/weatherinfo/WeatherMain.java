@@ -1,6 +1,7 @@
 package com.example.disasteroutlast.weatherinfo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.nfc.Tag;
 import android.os.Looper;
@@ -14,9 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.disasteroutlast.MainActivity;
 import com.example.disasteroutlast.R;
+import com.example.disasteroutlast.addpost.MainPost;
+import com.example.disasteroutlast.disasternews.MainDisaster;
 import com.example.disasteroutlast.weatherinfo.AdapterPager.ViewPagerAdapter;
 import com.example.disasteroutlast.weatherinfo.common.Common;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -44,12 +49,29 @@ public class WeatherMain extends AppCompatActivity {
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
 
+
     public static final String TAG = "YOUR-TAG-NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_main);
+
+        Button buttonone = (Button)findViewById(R.id.disaster_btn);
+        buttonone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WeatherMain.this, MainDisaster.class));
+            }
+        });
+
+        Button buttontwo = (Button)findViewById(R.id.disaster_btn_two);
+        buttontwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WeatherMain.this, MainPost.class));
+            }
+        });
 
         //Layout add and toolbar
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.root_view);
