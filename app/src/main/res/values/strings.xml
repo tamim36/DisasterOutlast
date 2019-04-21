@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Add Movie</string>
+    <string name="app_name">Disaster Survive</string>
+    <string name="title_activity_location_update">Map</string>
 </resources>

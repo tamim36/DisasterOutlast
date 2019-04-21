@@ -44,8 +44,8 @@ public class MainPost extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_post);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Community");
-        mDatabase2 = FirebaseDatabase.getInstance().getReference().child("Community");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Posts");
+        mDatabase2 = FirebaseDatabase.getInstance().getReference().child("Posts");
 
         mBloglist = (RecyclerView)findViewById(R.id.blog_list);
         mBloglist.setHasFixedSize(true);
@@ -53,7 +53,11 @@ public class MainPost extends AppCompatActivity  {
 
         mBloglist2 = (RecyclerView)findViewById(R.id.blog_list);
         mBloglist2.setHasFixedSize(true);
-        mBloglist2.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        mBloglist2.setLayoutManager(linearLayoutManager);
+
 
         mSearchField = (EditText) findViewById(R.id.search_field);
         mSearchBtn = (ImageButton) findViewById(R.id.search_btn);
@@ -88,8 +92,6 @@ public class MainPost extends AppCompatActivity  {
                 viewHolder.setTitle(model.getTitle());
                 //viewHolder.setDesc(model.getDescription());
                 viewHolder.setGenre(model.getGenre());
-                viewHolder.setRating(model.getRating());
-                viewHolder.setRelease_year(model.getRelease_year());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
@@ -142,8 +144,7 @@ public class MainPost extends AppCompatActivity  {
                 viewHolder.setTitle(model.getTitle());
                 //viewHolder.setDesc(model.getDescription());
                 viewHolder.setGenre(model.getGenre());
-                viewHolder.setRating(model.getRating());
-                viewHolder.setRelease_year(model.getRelease_year());
+                viewHolder.setUsername(model.getUsername());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
@@ -178,20 +179,19 @@ public class MainPost extends AppCompatActivity  {
             TextView post_title = (TextView)mView.findViewById(R.id.item_movie_title);
             post_title.setText(title);
         }
-        public void setRating(String rating) {
-            TextView mRating = (TextView)mView.findViewById(R.id.item_movie_rating);
-            mRating.setText(rating);
-        }
+
 
         public void setGenre(String genre) {
             TextView mgenre = (TextView)mView.findViewById(R.id.item_movie_genre);
             mgenre.setText(genre);
         }
 
-        public void setRelease_year(String release_year) {
-            TextView rel_year = (TextView)mView.findViewById(R.id.item_movie_release_date);
-            rel_year.setText(release_year);
+        public void setUsername(String username) {
+            TextView mUserName = (TextView)mView.findViewById(R.id.item_movie_rating);
+            mUserName.setText(username);
         }
+
+
 
         public void setImage(Context ctx, String Image){
             ImageView post_image = (ImageView)mView.findViewById(R.id.item_movie_poster);

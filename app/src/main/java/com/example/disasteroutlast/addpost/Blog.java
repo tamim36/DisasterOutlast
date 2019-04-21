@@ -5,12 +5,21 @@ public class Blog {
     private String Title;
     private String Description;
     private String Image;
-    private String rating;
+    private String username;
     private String genre;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     private String release_year;
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setRating(String username) {
+        this.username = username;
     }
 
     public void setGenre(String genre) {
@@ -22,7 +31,7 @@ public class Blog {
     }
 
     public String getRating() {
-        return rating;
+        return username;
     }
 
     public String getGenre() {
@@ -37,11 +46,11 @@ public class Blog {
 
     }
 
-    public Blog(String title, String description, String image, String rating, String genre, String release_year) {
+    public Blog(String title, String description, String image, String username, String genre, String release_year) {
         Title = title;
         Description = description;
         Image = image;
-        this.rating = rating;
+        this.username = username;
         this.genre = genre;
         this.release_year = release_year;
     }

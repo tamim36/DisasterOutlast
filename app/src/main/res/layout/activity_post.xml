@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/input_outline"
-            android:hint="Enter Movie Name..."
+            android:hint="Enter Disaster Name..."
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:singleLine="true"
@@ -33,56 +33,21 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp" />
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/edit_Address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <EditText
-                android:id="@+id/edit_release_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/input_outline"
-                android:hint="Release Year"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
-            <EditText
-                android:id="@+id/edit_Genre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/input_outline"
-                android:hint="Genre"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
-            <EditText
-                android:id="@+id/edit_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/input_outline"
-                android:hint="Rating"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_outline"
+            android:hint="Enter Address Name..."
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:singleLine="true"
+            android:padding="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
 
 
-        </LinearLayout>
 
         <EditText
             android:id="@+id/edit_text2"
@@ -92,7 +57,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/input_outline"
-            android:hint="Post Movie Description..."
+            android:hint="Post Disaster Description..."
             android:padding="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp" />

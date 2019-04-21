@@ -22,10 +22,9 @@ public class Post_inner_part extends AppCompatActivity {
 
     private ImageView imageView;
     private TextView post_title;
+    private TextView username_txt;
     private TextView post_desc;
     private TextView post_genre;
-    private TextView post_rating;
-    private TextView post_year;
     private ImageButton review;
 
     //private Button ratiing;
@@ -38,14 +37,13 @@ public class Post_inner_part extends AppCompatActivity {
         setContentView(R.layout.activity_post_inner_part);
 
         mPostKey = getIntent().getExtras().getString("blog_id");
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Community");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Posts");
 
         imageView = (ImageView)findViewById(R.id.image_post);
         post_title =  (TextView)findViewById(R.id.inner_post_title);
+        username_txt = (TextView)findViewById(R.id.inner_post_rating_2);
         post_desc = (TextView)findViewById(R.id.inner_post_desc);
         post_genre =  (TextView)findViewById(R.id.inner_post_genre);
-        post_year =  (TextView)findViewById(R.id.inner_post_year);
-        post_rating =  (TextView)findViewById(R.id.inner_post_rating);
         review = (ImageButton)findViewById(R.id.review_button);
         //ratiing = (Button)findViewById(R.id.rating_button);
 
@@ -64,15 +62,13 @@ public class Post_inner_part extends AppCompatActivity {
                 String title_view = (String)dataSnapshot.child("Title").getValue();
                 String title_desc = (String) dataSnapshot.child("Description").getValue();
                 String title_genre = (String) dataSnapshot.child("genre").getValue();
-                String title_rating = (String) dataSnapshot.child("rating").getValue();
-                String title_year = (String) dataSnapshot.child("release_year").getValue();
+                String username_str = (String) dataSnapshot.child("username").getValue();
                 String post_image= (String)dataSnapshot.child("Image").getValue();
 
                 post_title.setText(title_view);
                 post_desc.setText(title_desc);
                 post_genre.setText(title_genre);
-                post_year.setText(title_year);
-                post_rating.setText(title_rating);
+                username_txt.setText(username_str);
                 Picasso.with(Post_inner_part.this).load(post_image).into(imageView);
             }
 

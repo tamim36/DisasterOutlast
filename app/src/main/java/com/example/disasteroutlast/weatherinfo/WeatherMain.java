@@ -22,6 +22,9 @@ import com.example.disasteroutlast.MainActivity;
 import com.example.disasteroutlast.R;
 import com.example.disasteroutlast.addpost.MainPost;
 import com.example.disasteroutlast.disasternews.MainDisaster;
+import com.example.disasteroutlast.googlemaps.MapsActivity;
+import com.example.disasteroutlast.loginregister.Homepage;
+import com.example.disasteroutlast.loginregister.LoginActivity;
 import com.example.disasteroutlast.weatherinfo.AdapterPager.ViewPagerAdapter;
 import com.example.disasteroutlast.weatherinfo.common.Common;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,6 +32,7 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.auth.FirebaseAuth;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -44,6 +48,7 @@ public class WeatherMain extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private CoordinatorLayout coordinatorLayout;
+    private FirebaseAuth firebaseAuth;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
@@ -72,6 +77,27 @@ public class WeatherMain extends AppCompatActivity {
                 startActivity(new Intent(WeatherMain.this, MainPost.class));
             }
         });
+
+        Button buttonthree = (Button)findViewById(R.id.disaster_btn_three);
+        buttonthree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WeatherMain.this, Homepage.class));
+            }
+        });
+
+        Button buttonfour = (Button)findViewById(R.id.logout);
+        buttonfour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth=FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                Intent intent = new Intent(WeatherMain.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         //Layout add and toolbar
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.root_view);

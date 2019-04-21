@@ -2,18 +2,49 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.disasteroutlast">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyDIoOsso3TznDa8czihX7OeZq65NXOjVW4" />
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:launchMode="singleTop"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addpost.BasicActivtity"></activity>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDIoOsso3TznDa8czihX7OeZq65NXOjVW4" />
+
+        <activity
+            android:name=".loginregister.mapshelter.LocationUpdateActivity"
+            android:label="@string/title_activity_location_update"></activity>
+        <activity android:name=".loginregister.show_preparation" />
+        <activity android:name=".googlemaps.MapsActivity" />
+        <activity android:name=".addpost.BasicActivtity" />
         <activity android:name=".addpost.ReviewActivity" />
         <activity android:name=".addpost.PostActivity" />
         <activity android:name=".addpost.Post_inner_part" />
@@ -22,7 +53,9 @@
         <activity android:name=".loginregister.Homepage" />
         <activity android:name=".loginregister.RegisterActivity" />
         <activity android:name=".loginregister.PasswordActivity" />
-        <activity android:name=".loginregister.LoginActivity">
+        <activity
+            android:name=".loginregister.LoginActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private TextView register,forgetpassword;
+    private  TextView register,forgetpassword;
     private EditText email,password;
     private Button loginbutton;
 
@@ -30,6 +30,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+        {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         email=(EditText) findViewById(R.id.email);
         password=(EditText)findViewById(R.id.password);
@@ -42,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                finish();
             }
         });
         forgetpassword.setOnClickListener(new View.OnClickListener() {
@@ -55,23 +63,37 @@ public class LoginActivity extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loginbutton.setEnabled(false);
 
                 String pass=password.getText().toString().trim();
                 String emai=email.getText().toString().trim();
+
+
                 //Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
                 firebaseAuth.signInWithEmailAndPassword( emai , pass ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            finish();
                         }
                         else {
                             Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+
+
+
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        loginbutton.setEnabled(true);
     }
 }

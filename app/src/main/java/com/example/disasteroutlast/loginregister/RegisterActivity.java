@@ -67,13 +67,14 @@ public class RegisterActivity extends AppCompatActivity {
                             name , email_,city_
                     );
                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                    mDatabase.child("Users").child(city_).child(user.getUid()).setValue(newuser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mDatabase.child("Users").child(user.getUid()).setValue(newuser).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful() )
                             {
                                 Toast.makeText(RegisterActivity.this,"Registration successful",Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                finish();
                             }
                         }
                     });
@@ -103,6 +104,8 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                register.setEnabled(false);
+
                 final String user=username.getText().toString().trim();
                 final String pass=password.getText().toString().trim();
                 final String emai=email.getText().toString().trim();
@@ -113,5 +116,11 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-}
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        register.setEnabled(true);
+    }
+}
